@@ -18,7 +18,7 @@ body{ padding: 26px 0 46px; }
 }
 .card:hover{
   transform: translateY(-2px);
-  border-color: rgba(215,180,106,.35);
+  border-color: rgba(230, 101, 189, 0.446);
 }
 .card h3{ margin:0 0 6px; }
 .card p{ margin:0; color: var(--muted); line-height: 1.7; }
