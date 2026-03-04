@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timeline ⏳</title>
+
+  <link rel="stylesheet" href="../Shared/css/theme.css">
+  <link rel="stylesheet" href="../Shared/css/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header class="container header">
+    <div>
+      <h2 class="h-title">⏳ تایم‌لاین ما</h2>
+      <p class="h-sub">روی نقطه‌ها هاور کن… بعد هم کلیک کن 🫶</p>
+    </div>
+
+    <div class="header-actions">
+      <button class="pill" id="toggleViewBtn">Horizontal</button>
+      <a class="pill" href="../01_Home/index.html">Back ←</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Horizontal (default) -->
+    <section id="timelineHorizontal" class="tl tl-horizontal">
+      <div class="top-fade"></div>
+
+      <div class="rail">
+        <div id="nodes" class="nodes"></div>
+      </div>
+    </section>
+
+    <!-- Vertical (hidden by default) -->
+    <section id="timelineVertical" class="tl tl-vertical hidden">
+      <div class="vline"></div>
+      <div id="vitems" class="vitems"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <div class="modal-card">
+      <button class="icon-btn close" id="closeBtn">✕</button>
+
+      <div class="modal-top">
+        <div>
+          <div class="modal-date" id="mDate"></div>
+          <h3 class="modal-title" id="mTitle"></h3>
+        </div>
+      </div>
+
+      <img id="mImg" class="modal-img hidden" alt="timeline photo" />
+      <p class="modal-text" id="mText"></p>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+/* 02_Playlist/style.css */
+
+:root{
+  --bg1: #ffffff;
+  --bg2: #fce4ec;   /* صورتی خیلی کمرنگ */
+  --accent: #f7c8d8; /* رز لطیف */
+  --accent2: #cfe9ff; /* آبی آسمونی لطیف */
+  --text: #222;
+  --muted: #666;
+  --card: #ffffff;
+  --shadow: 0 18px 50px rgba(0,0,0,0.08);
+  --radius: 22px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  display:flex;
+  justify-content:center;
+  padding: 40px 0;
+}
+
+.container{
+  width: min(900px, 92vw);
+}
+
+/* -------- Player Card -------- */
+.player-card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow);
+  text-align:center;
+}
+.player-card{
+  position: relative;
+  max-height: 75vh;
+  overflow: hidden;
+}
+
+.back-btn{
+  position: absolute;
+  top: 8px;
+  left: 18px;
+  background: #ee9ab9dc;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.back-btn:hover{
+  background: #e82b6a;
+}
+.cover{
+  width: clamp(100px, 30vh, 200px);
+  height: clamp(100px, 30vh, 200px);
+  border-radius: 22px;
+  object-fit: cover;
+  display:block;
+  margin: 0 auto 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+  transition: transform .3s ease;
+}
+
+.cover{
+  transition: transform .4s ease;
+}
+
+/* حالت پلی */
+.cover.playing{
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%   { transform: scale(0.9); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(0.9); }
+}
+
+.info h2{
+  margin: 6px 0 4px;
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+.info p{
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* -------- Controls -------- */
+.controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.controls button{
+  background: var(--accent);
+  border: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 18px;
+  display:grid;
+  place-items:center;
+  transition: transform .15s ease, background .2s ease;
+  box-shadow: 0 10px 20px rgba(247,200,216,0.45);
+}
+
+.controls button:hover{
+  background: var(--accent2);
+  transform: translateY(-1px);
+}
+
+.controls button:active{
+  transform: translateY(0);
+}
+
+/* -------- Progress (Left to Right) -------- */
+.progress-container{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-top: 10px;
+
+  direction: ltr; /* اسلایدر چپ به راست */
+}
+
+.progress-container span{
+  width: 52px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  opacity: .9;
+
+  direction: rtl; /* عددها تو RTL طبیعی‌تر */
+}
+
+#progress{
+  flex: 1;
+  width: 100%;
+  accent-color: #7bbcff; /* رنگ دسته اسلایدر (آبی لطیف) */
+}
+
+/* -------- Playlist (Scrollable ONLY here) -------- */
+.playlist{
+  margin-top: 18px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+
+  max-height: 240px;   /* فقط این بخش اسکرول می‌خوره */
+  overflow-y: auto;
+
+  direction: ltr; /* لیست سمت چپ قرار بگیره */
+}
+
+/* scrollbar (اختیاری) */
+.playlist::-webkit-scrollbar{ width: 10px; }
+.playlist::-webkit-scrollbar-thumb{
+  background: var(--accent);
+  border-radius: 999px;
+}
+.playlist::-webkit-scrollbar-track{
+  background: rgba(0,0,0,0.04);
+  border-radius: 999px;
+}
+
+/* Each song row */
+.song{
+  background: rgba(252,228,236,0.35);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin: 10px 6px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+
+  direction: rtl;     /* متن فارسی درست */
+  text-align: left;   /* آیتم‌ها سمت چپ حس بشن */
+  transition: background .2s ease, transform .15s ease;
+}
+
+.song:hover{
+  background: rgba(207,233,255,0.45);
+  transform: translateY(-1px);
+}
+.song.active::before{
+  content: "▶";
+  margin-left: 8px;
+  color: #e91e63;
+}
+.song.active{
+  background: #f7c8d8;
+  border-color: rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+#bgBlur{
+  position: fixed;
+  inset:0;
+  z-index:-1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(1.1);
+  opacity: 0.35;
+  transition: background-image .4s ease;
+}
+/* Mobile tweaks */
+@media (max-width: 520px){
+  body{ padding: 18px 0; }
+  .player-card{ padding: 18px; }
+  .cover{ width: 190px; height: 190px; }
+  .info h2{ font-size: 28px; }
+  .playlist{ max-height: 320px; }
+}

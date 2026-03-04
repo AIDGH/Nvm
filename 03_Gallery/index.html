@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>آلبوم عکس‌ها 🖼️</title>
+
+  <link rel="stylesheet" href="../Shared/css/theme.css">
+  <link rel="stylesheet" href="../Shared/css/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header class="container header">
+    <div>
+      <h2 class="h-title">🖼️ Our Gallery</h2>
+      <p class="h-sub">روی عکس‌ها بزن تا بزرگ باز بشن.</p>
+    </div>
+
+    <a class="back-btn" href="../01_Home/index.html">Back ←</a>
+  </header>
+
+  <main class="container">
+    <section id="grid" class="grid"></section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" id="closeBackdrop"></div>
+
+    <div class="modal-card">
+      <button class="icon-btn close" id="closeBtn">✕</button>
+
+      <button class="icon-btn prev" id="prevBtn">›</button>
+      <img id="modalImg" class="modal-img" alt="photo" />
+      <button class="icon-btn next" id="nextBtn">‹</button>
+
+      <div id="caption" class="caption"></div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

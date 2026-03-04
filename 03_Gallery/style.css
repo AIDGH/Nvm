@@ -1,0 +1,128 @@
+body{ padding: 28px 0 46px; }
+
+.header{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.h-title{ margin:0; font-size: 1.6rem; }
+.h-sub{ margin:.35rem 0 0; color: var(--muted); line-height: 1.8; }
+
+.back-btn{
+  background: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: .2s;
+  height: fit-content;
+}
+.back-btn:hover{ background: var(--bg2); }
+
+/* Grid */
+.grid{
+  display:grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 720px){
+  .grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 980px){
+  .grid{ grid-template-columns: repeat(4, 1fr); }
+}
+
+.card{
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.06);
+  overflow:hidden;
+  cursor:pointer;
+  border: 1px solid rgba(0,0,0,.05);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 55px rgba(0,0,0,.10);
+}
+.thumb{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display:block;
+}
+
+/* Modal */
+.modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  place-items: center;
+  z-index: 999;
+}
+.modal.show{ display:grid; }
+
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+}
+
+.modal-card{
+  position: relative;
+  width: min(980px, 92vw);
+  background: rgba(255,255,255,.92);
+  border-radius: 22px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display:grid;
+  align-items:center;
+  justify-items:center;
+  gap: 10px;
+}
+
+.modal-img{
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.caption{
+  color: #333;
+  opacity: .85;
+  padding: 4px 10px 10px;
+  text-align: center;
+}
+
+/* buttons in modal */
+.icon-btn{
+  position:absolute;
+  border:none;
+  cursor:pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transition: .15s;
+  display:grid;
+  place-items:center;
+  font-size: 22px;
+}
+.icon-btn:hover{ background: var(--accent2); }
+
+.close{ top: 12px; left: 12px; font-size: 18px; }
+.prev{ top: 50%; left: 12px; transform: translateY(-50%); }
+.next{ top: 50%; right: 12px; transform: translateY(-50%); }
+
+@media (max-width: 520px){
+  .prev,.next{ width: 40px; height: 40px; }
+}

@@ -1,0 +1,383 @@
+body{ padding: 28px 0 46px; }
+
+.header{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.h-title{ margin:0; font-size: 1.6rem; }
+.h-sub{ margin:.35rem 0 0; color: var(--muted); line-height: 1.8; }
+
+.header-actions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.pill{
+  background: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  transition: .2s;
+  height: fit-content;
+  text-decoration:none;
+  color: var(--text);
+}
+.pill:hover{ background: var(--bg2); }
+
+/* ---------- Shared helpers ---------- */
+.hidden{ display:none !important; }
+
+/* ---------- Horizontal timeline ---------- */
+.tl-horizontal{
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 40px rgba(0,0,0,.06);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.rail{
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 220px 6px 10px;
+  direction: rtl;
+  scrollbar-gutter: stable;
+}
+
+.rail::-webkit-scrollbar{ height: 10px;}
+.rail::-webkit-scrollbar-thumb{
+  background: var(--accent);
+  border-radius: 999px;
+}
+.rail::-webkit-scrollbar-track{
+  background: rgba(0,0,0,0.05);
+  border-radius: 999px;
+}
+
+/* .rail-line{
+  position:absolute;
+  top: 242px;
+  right: 18px;
+  left: 18px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: .9;
+} */
+
+.nodes{ position: relative; z-index: 1; }
+.node{ position: relative; z-index: 2; }
+
+.nodes{
+  position: relative;
+  display:flex;
+  gap: 16px;
+  padding: 0 18px;
+  min-width: max-content;
+}
+
+/* لاین اصلی روی خود nodes تا با اسکرول ادامه داشته باشه */
+.nodes::before{
+  content:"";
+  position:absolute;
+  top: 22px;
+  right: 18px;
+  left: 18px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: .9;
+}
+
+.node{
+  position: relative;
+  width: 170px;
+  flex: 0 0 auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+  cursor: pointer;
+}
+
+.dot{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 4px solid #fff;
+  box-shadow: 0 10px 25px rgba(247,200,216,.55);
+  margin-top: 14px; /* روی خط می‌افته */
+}
+
+.label{
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: .95rem;
+  color: #222;
+}
+
+.sublabel{
+  margin-top: 4px;
+  font-size: .88rem;
+  color: var(--muted);
+}
+
+/* hover mini card */
+.preview{
+  position:absolute;
+  top: -10px;
+  transform: translateY(-100%);
+  width: 230px;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  box-shadow: 0 18px 55px rgba(0,0,0,.12);
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.node:hover .preview{
+  opacity: 1;
+  transform: translateY(-105%);
+}
+
+.preview img{
+  width:100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 14px;
+  display:block;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.preview .p-title{
+  margin: 8px 0 0;
+  font-weight: 800;
+  font-size: .95rem;
+}
+.preview .p-date{
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+/* ---------- Vertical timeline (optional view) ---------- */
+.tl-vertical{
+  position: relative;
+  padding: 10px 0;
+}
+
+.vline{
+  position:absolute;
+  top:0;
+  bottom:0;
+  right: 18px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  opacity: .9;
+}
+
+.vitems{
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 52px;
+}
+
+.vevent{
+  position: relative;
+  background: rgba(255,255,255,0.75);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 40px rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.05);
+  padding: 14px;
+  cursor: pointer;
+}
+
+.vdot{
+  position:absolute;
+  right: 10px;
+  top: 16px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 4px solid #fff;
+  box-shadow: 0 10px 25px rgba(247,200,216,.55);
+}
+
+.vtop{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-right: 18px;
+}
+
+.vtitle{ margin:0; font-size: 1.05rem; }
+.vdate{ color: var(--muted); font-size:.95rem; }
+
+.vtext{
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.9;
+  padding-right: 18px;
+
+  /* خلاصه برای view عمودی */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Modal ---------- */
+.modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  place-items: center;
+  z-index: 999;
+}
+.modal.show{ display:grid; }
+
+.modal-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+}
+
+.modal-card{
+  position: relative;
+  width: min(900px, 92vw);
+  max-height: 86vh;
+  overflow: auto;
+  background: rgba(255,255,255,.92);
+  border-radius: 22px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.35);
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: pop .18s ease-out both;
+}
+@keyframes pop{
+  from{ transform: translateY(10px); opacity:0; }
+  to{ transform: translateY(0); opacity:1; }
+}
+
+.icon-btn{
+  position:absolute;
+  border:none;
+  cursor:pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transition: .15s;
+  display:grid;
+  place-items:center;
+  font-size: 18px;
+}
+.icon-btn:hover{ background: var(--accent2); }
+.close{ top: 12px; left: 12px; }
+
+.modal-top{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 6px 0;
+}
+
+.modal-date{
+  color: var(--muted);
+  font-size: .95rem;
+  margin-bottom: 4px;
+}
+.modal-title{
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-img{
+  width: 100%;
+  max-height: 52vh;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.05);
+  display:block;
+  margin-top: 12px;
+}
+
+.modal-text{
+  margin: 12px 6px 6px;
+  color: #444;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+.tl-horizontal{
+  position: relative;
+  overflow: hidden;
+}
+.tl-horizontal{
+  position: relative;
+  overflow: hidden;
+}
+
+/* لایه‌ی ثابت روی viewport (با اسکرول تکون نمی‌خوره) */
+.top-fade{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /* فقط بالای لاین */
+  height: 210px; /* نزدیک به padding-top rail */
+  pointer-events: none;
+  z-index: 3;
+
+  /* دو لکه رنگی + محوشدن به پایین */
+  background:
+    radial-gradient(circle at 25% 35%, rgba(247,200,216,0.55), transparent 60%),
+    radial-gradient(circle at 75% 30%, rgba(207,233,255,0.55), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0));
+
+  filter: blur(26px);
+  opacity: .95;
+
+  /* انیمیشن حرکت نرم */
+  animation: dreamyMove 8s ease-in-out infinite;
+}
+
+/* برای اینکه rail زیر این لایه باشه */
+.rail{
+  position: relative;
+  z-index: 1;
+}
+
+/* خط و نودها روی همه‌چی */
+.nodes{ position: relative; z-index: 2; }
+.node{ position: relative; z-index: 2; }
+
+@keyframes dreamyMove{
+  0%   { transform: translateY(0) translateX(0) scale(1); }
+  50%  { transform: translateY(-6px) translateX(10px) scale(1.03); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+
+/* احترام به کاربرای حساس به حرکت */
+@media (prefers-reduced-motion: reduce){
+  .top-fade{ animation: none; }
+}

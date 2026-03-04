@@ -1,0 +1,4 @@
+body{ padding: 26px 0 46px; }
+.header{ display:flex; justify-content:space-between; align-items:center; margin-bottom: 18px; gap:12px; }
+.h-title{ margin:0; font-size:1.6rem; }
+.box{ padding: 18px; color: var(--muted); line-height:1.9; }

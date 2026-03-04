@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Playlist 🎧</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="player-card">
+      <button class="back-btn" onclick="window.location.href='../01_Home/index.html'">
+        ←
+      </button>
+      <img id="cover" src="Songs/covers/01.jpg" class="cover">
+
+      <div class="info">
+        <h2 id="title">Extasy</h2>
+        <p id="artist">Koroush, Sijal, Sami Low, Raha</p>
+      </div>
+
+      <div class="controls">
+        <button id="next">⏭</button>
+        <button id="play">▶</button>
+        <button id="prev">⏮</button>
+      </div>
+
+      <div class="progress-container">
+        <span id="current">0:00</span>
+        <input type="range" id="progress" value="0" min="0" max="100">
+        <span id="duration">0:00</span>
+      </div>
+
+      <audio id="audio" preload="none"></audio>
+    </div>
+
+    <div id="playlist" class="playlist"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+<div id="bgBlur"></div>
+</html>
