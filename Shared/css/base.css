@@ -31,16 +31,16 @@ button{ font: inherit; }
   gap:.6rem;
   padding: .9rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid rgba(215,180,106,.45);
-  background: linear-gradient(180deg, rgba(215,180,106,.18), rgba(215,180,106,.06));
+  border: 1px solid rgba(234, 123, 200, 0.45);
+  background: linear-gradient(180deg, rgba(215, 106, 171, 0.18), rgba(205, 89, 168, 0.06));
   color: var(--text);
   cursor:pointer;
   transition: transform .15s ease, border-color .15s ease, background .15s ease;
 }
 .btn:hover{
   transform: translateY(-1px);
-  border-color: rgba(215,180,106,.75);
-  background: linear-gradient(180deg, rgba(215,180,106,.24), rgba(215,180,106,.08));
+  border-color: rgba(215, 106, 179, 0.75);
+  background: linear-gradient(180deg, rgba(229, 102, 212, 0.439), rgba(215,180,106,.08));
 }
 .btn:active{ transform: translateY(0); }
 
